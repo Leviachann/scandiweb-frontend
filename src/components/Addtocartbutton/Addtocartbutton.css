@@ -1,0 +1,17 @@
+.add-to-cart-btn {
+    width: 100%;
+    max-width: 292px;
+    height: 52px;
+    background-color: #5ECE7B;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #4ab866;
+}

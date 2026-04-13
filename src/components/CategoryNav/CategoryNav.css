@@ -1,0 +1,32 @@
+.links-nav {
+    display: flex;
+    gap: 32px;
+    height: 100%;
+}
+
+.active-link {
+    text-decoration: none;
+    color: #5ECE7B;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #5ECE7B;
+}
+
+.link {
+    text-decoration: none;
+    color: #1D1F22;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}

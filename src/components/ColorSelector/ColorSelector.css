@@ -1,0 +1,28 @@
+.color-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.color-options {
+    display: flex;
+    gap: 8px;
+}
+
+.color-swatch {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #E5E5E5;
+    cursor: pointer;
+    transition: outline 0.15s ease;
+}
+
+.color-swatch:hover {
+    outline: 2px solid #5ECE7B;
+    outline-offset: 2px;
+}
+.color-swatch-active{
+    
+    outline: 2px solid #5ECE7B;
+    outline-offset: 2px;
+}

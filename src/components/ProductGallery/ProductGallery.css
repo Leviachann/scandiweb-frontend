@@ -1,0 +1,109 @@
+.product-gallery {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.thumbnail-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 79px;
+    flex-shrink: 0;
+}
+
+.thumb-scroll-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #1D1F22;
+    padding: 4px;
+    line-height: 1;
+}
+
+.thumb-scroll-btn:hover {
+    color: #5ECE7B;
+}
+
+.thumbnail-viewport {
+    overflow: hidden;
+    height: 264px; 
+    width: 79px;
+}
+
+.thumbnail-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail-wrapper {
+    width: 79px;
+    height: 80px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+.thumbnail-wrapper:hover {
+    border-color: #5ECE7B;
+}
+
+.thumbnail-active {
+    border-color: #5ECE7B;
+}
+
+.thumbnail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.main-image-wrapper {
+    position: relative;
+    width: 510px;
+    height: 510px;
+    flex-shrink: 0;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(29, 31, 34, 0.73);
+    color: #ffffff;
+    border: none;
+    width: 40px;
+    height: 80px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background-color 0.2s ease;
+}
+
+.gallery-arrow:hover {
+    background-color: #1D1F22;
+}
+
+.gallery-arrow-left {
+    left: 0;
+}
+
+.gallery-arrow-right {
+    right: 0;
+}

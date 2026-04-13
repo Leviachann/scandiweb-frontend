@@ -1,0 +1,128 @@
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.cart-item-name {
+    font-size: 18px;
+    font-weight: 300;
+    color: #1D1F22;
+    text-align: left;
+}
+
+.cart-item-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1D1F22;
+    text-align: left;
+}
+
+.cart-item-attribute {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-item-attr-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1D1F22;
+    text-align: left;
+    padding-top: 8px;
+}
+
+.cart-item-options {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.cart-item-option {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #1D1F22;
+    background: #ffffff;
+    color: #1D1F22;
+    font-size: 14px;
+    cursor: not-allowed;
+}
+
+.cart-item-option-selected {
+    background: #1D1F22;
+    color: #ffffff;
+}
+
+.cart-item-swatch {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #E5E5E5;
+    cursor: not-allowed;
+}
+
+.cart-item-swatch-selected {
+    outline: 2px solid #5ECE7B;
+    outline-offset: 2px;
+}
+
+.cart-item-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-item-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 8px;
+}
+
+.cart-qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #1D1F22;
+    background: #ffffff;
+    color: #1D1F22;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-qty-btn:hover {
+    background: #1D1F22;
+    color: #ffffff;
+}
+
+.cart-qty-value {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1D1F22;
+    min-width: 16px;
+    text-align: center;
+}
+
+.cart-item-image {
+    width: 105px;
+    height:200px;
+    object-fit: cover;
+    display: block;
+}

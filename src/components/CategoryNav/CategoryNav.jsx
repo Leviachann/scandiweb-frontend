@@ -29,11 +29,12 @@ const CategoryNav = () => {
             <NavLink
                 to="/all"
                 className={({ isActive }) => (isActive ? "active-link" : "link")}
-                data-testid={({ isActive }) =>
-                    isActive ? "active-category-link" : "category-link"
-                }
             >
-                All
+                {({ isActive }) => (
+                    <span data-testid={isActive ? "active-category-link" : "category-link"}>
+                        All
+                    </span>
+                )}
             </NavLink>
 
             {categories.map((category) => (

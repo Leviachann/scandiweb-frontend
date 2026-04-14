@@ -35,25 +35,22 @@ const CartOverlay = ({ cartItems = [], increaseQuantity, decreaseQuantity, cartO
         }
     };
 
- return (
-    <>
-        <div className="cart-wrapper">
-            <button
-                className="cart-btn"
-                data-testid="cart-btn"
-                onClick={() => setCartOpen(!cartOpen)}
-            >
-                <HiOutlineShoppingCart />
-                {totalItems > 0 && (
-                    <span className="cart-bubble">{totalItems}</span>
-                )}
-            </button>
-            <div 
-                className={`cart-overlay-container ${cartOpen ? 'show' : 'hide'}`} 
-                data-testid="cart-overlay"
-            >
+    return (
+        <>
+            <div className="cart-wrapper">
+                <button
+                    className="cart-btn"
+                    data-testid="cart-btn"
+                    onClick={() => setCartOpen(!cartOpen)}
+                >
+                    <HiOutlineShoppingCart />
+                    {totalItems > 0 && (
+                        <span className="cart-bubble">{totalItems}</span>
+                    )}
+                </button>
+
                 {cartOpen && (
-                    <div className="inside-cart">
+                    <div className="inside-cart" data-testid="cart-overlay">
                         <p className="cart-heading">
                             <strong>My Bag</strong>, {itemLabel}
                         </p>
@@ -87,13 +84,11 @@ const CartOverlay = ({ cartItems = [], increaseQuantity, decreaseQuantity, cartO
                     </div>
                 )}
             </div>
-        </div>
-
-        {cartOpen && (
-            <div className="cart-backdrop" onClick={() => setCartOpen(false)} />
-        )}
-    </>
-);
+            {cartOpen && (
+                <div className="cart-backdrop" onClick={() => setCartOpen(false)} />
+            )}
+        </>
+    );
 };
 
 export default CartOverlay;

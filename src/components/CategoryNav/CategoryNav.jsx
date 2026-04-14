@@ -29,12 +29,11 @@ const CategoryNav = () => {
             <NavLink
                 to="/all"
                 className={({ isActive }) => (isActive ? "active-link" : "link")}
+                data-testid={({ isActive }) =>
+                    isActive ? "active-category-link" : "category-link"
+                }
             >
-                {({ isActive }) => (
-                    <span data-testid={isActive ? "active-category-link" : "category-link"}>
-                        All
-                    </span>
-                )}
+                All
             </NavLink>
 
             {categories.map((category) => (
@@ -42,12 +41,11 @@ const CategoryNav = () => {
                     key={category.name}
                     to={`/${category.name.toLowerCase()}`}
                     className={({ isActive }) => (isActive ? "active-link" : "link")}
+                    data-testid={({ isActive }) =>
+                        isActive ? "active-category-link" : "category-link"
+                    }
                 >
-                    {({ isActive }) => (
-                        <span data-testid={isActive ? "active-category-link" : "category-link"}>
-                            {capitalize(category.name)}
-                        </span>
-                    )}
+                    {capitalize(category.name)}
                 </NavLink>
             ))}
         </nav>

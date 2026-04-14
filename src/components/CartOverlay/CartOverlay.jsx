@@ -50,7 +50,7 @@ const CartOverlay = ({ cartItems = [], increaseQuantity, decreaseQuantity, cartO
                 </button>
 
                 {cartOpen && (
-                    <div className="inside-cart">
+                    <div className="inside-cart" data-testid="cart-overlay">
                         <p className="cart-heading">
                             <strong>My Bag</strong>, {itemLabel}
                         </p>

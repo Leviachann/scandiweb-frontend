@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink,useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { graphqlFetch } from "../../utils/graphql";
 import './CategoryNav.css';
 
 const CategoryNav = () => {
     const [categories, setCategories] = useState([]);
+    const location = useLocation();
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -23,33 +24,32 @@ const CategoryNav = () => {
     }, []);
 
     const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-
     return (
         <nav className="links-nav">
             <NavLink
                 to="/all"
                 className={({ isActive }) => (isActive ? "active-link" : "link")}
+                data-testid={location.pathname === "/all" ? "active-category-link" : "category-link"}
             >
-                {({ isActive }) => (
-                    <span data-testid={isActive ? "active-category-link" : "category-link"}>
-                        All
-                    </span>
-                )}
+                All
             </NavLink>
 
-            {categories.map((category) => (
-                <NavLink
-                    key={category.name}
-                    to={`/${category.name.toLowerCase()}`}
-                    className={({ isActive }) => (isActive ? "active-link" : "link")}
-                >
-                    {({ isActive }) => (
-                        <span data-testid={isActive ? "active-category-link" : "category-link"}>
-                            {capitalize(category.name)}
-                        </span>
-                    )}
-                </NavLink>
-            ))}
+            {/* The Dynamic links */}
+            {categories.map((category) => {
+                const path = `/${category.name.toLowerCase()}`;
+                const isActive = location.pathname === path;
+
+                return (
+                    <NavLink
+                        key={category.name}
+                        to={path}
+                        className={isActive ? "active-link" : "link"}
+                        data-testid={isActive ? "active-category-link" : "category-link"}
+                    >
+                        {capitalize(category.name)}
+                    </NavLink>
+                );
+            })}
         </nav>
     );
 };

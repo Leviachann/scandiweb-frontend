@@ -49,39 +49,45 @@ const CartOverlay = ({ cartItems = [], increaseQuantity, decreaseQuantity, cartO
                     )}
                 </button>
 
-                {cartOpen && (
-                    <div className="inside-cart" data-testid="cart-overlay">
-                        <p className="cart-heading">
-                            <strong>My Bag</strong>, {itemLabel}
-                        </p>
+                <div
+                    className={`cart-overlay-container ${cartOpen ? 'show' : 'hide'}`}
+                    data-testid="cart-overlay"
+                >
+                    {cartOpen && (
+                        <div className="inside-cart">
+                            <p className="cart-heading">
+                                <strong>My Bag</strong>, {itemLabel}
+                            </p>
 
-                        <div className="cart-items-list">
-                            {cartItems.map((item, index) => (
-                                <CartItem
-                                    key={`${item.id}-${JSON.stringify(item.selectedOptions)}-${index}`}
-                                    item={item}
-                                    increaseQuantity={increaseQuantity}
-                                    decreaseQuantity={decreaseQuantity}
-                                />
-                            ))}
+                            <div className="cart-items-list">
+                                {cartItems.map((item, index) => (
+                                    <CartItem
+                                        key={`${item.id}-${JSON.stringify(item.selectedOptions)}-${index}`}
+                                        item={item}
+                                        increaseQuantity={increaseQuantity}
+                                        decreaseQuantity={decreaseQuantity}
+                                    />
+                                ))}
+                            </div>
+
+                            <div className="cart-total-row">
+                                <span className="cart-total-label">Total</span>
+                                <span className="cart-total-amount" data-testid="cart-total">
+                                    ${totalPrice.toFixed(2)}
+                                </span>
+                            </div>
+
+                            <button
+                                className={`place-order-btn ${totalItems === 0 ? 'place-order-btn-disabled' : ''}`}
+                                disabled={totalItems === 0}
+                                onClick={() => handlePlaceOrder()}
+                                data-testid="place-order-btn"
+                            >
+                                PLACE ORDER
+                            </button>
                         </div>
-
-                        <div className="cart-total-row">
-                            <span className="cart-total-label">Total</span>
-                            <span className="cart-total-amount" data-testid="cart-total">
-                                ${totalPrice.toFixed(2)}
-                            </span>
-                        </div>
-
-                        <button
-                            className={`place-order-btn ${totalItems === 0 ? 'place-order-btn-disabled' : ''}`}
-                            disabled={totalItems === 0}
-                            onClick={ () =>  handlePlaceOrder()}
-                        >
-                            PLACE ORDER
-                        </button>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
 
             {cartOpen && (

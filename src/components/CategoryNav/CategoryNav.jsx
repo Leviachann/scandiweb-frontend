@@ -41,11 +41,12 @@ const CategoryNav = () => {
                     key={category.name}
                     to={`/${category.name.toLowerCase()}`}
                     className={({ isActive }) => (isActive ? "active-link" : "link")}
-                    data-testid={({ isActive }) =>
-                        isActive ? "active-category-link" : "category-link"
-                    }
                 >
-                    {capitalize(category.name)}
+                    {({ isActive }) => (
+                        <span data-testid={isActive ? "active-category-link" : "category-link"}>
+                            {capitalize(category.name)}
+                        </span>
+                    )}
                 </NavLink>
             ))}
         </nav>

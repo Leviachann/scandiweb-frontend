@@ -1,24 +1,51 @@
 import { NavLink } from "react-router-dom";
-import './CategoryNav.css'
+import { useState, useEffect } from "react";
+import { graphqlFetch } from "../../utils/graphql";
+import './CategoryNav.css';
 
 const CategoryNav = () => {
-    const navLinks = [
-        { path: "/category/all", name: "All" },
-        { path: "/category/clothes", name: "Clothes" },
-        { path: "/category/tech", name: "Tech" },
-    ];
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            const query = `
+                query {
+                    categories {
+                        name
+                    }
+                }
+            `;
+            const res = await graphqlFetch(query);
+            setCategories(res.data.categories);
+        };
+
+        fetchCategories();
+    }, []);
+
+    const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
     return (
         <nav className="links-nav">
-            {navLinks.map((link) => (
+            <NavLink
+                to="/all"
+                className={({ isActive }) => (isActive ? "active-link" : "link")}
+            >
+                {({ isActive }) => (
+                    <span data-testid={isActive ? "active-category-link" : "category-link"}>
+                        All
+                    </span>
+                )}
+            </NavLink>
+
+            {categories.map((category) => (
                 <NavLink
-                    key={link.path}
-                    to={link.path}
+                    key={category.name}
+                    to={`/${category.name.toLowerCase()}`}
                     className={({ isActive }) => (isActive ? "active-link" : "link")}
                 >
                     {({ isActive }) => (
                         <span data-testid={isActive ? "active-category-link" : "category-link"}>
-                            {link.name}
+                            {capitalize(category.name)}
                         </span>
                     )}
                 </NavLink>

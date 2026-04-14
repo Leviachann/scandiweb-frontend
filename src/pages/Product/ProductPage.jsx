@@ -93,9 +93,10 @@ const ProductPage = () => {
 
     if (loading) return <p>Loading...</p>;
     if (!product) return <p>Product not found</p>;
-
-    const isSelectionValid = product.attributes.length === 0 ||
-        product.attributes.every(attr => selectedOptions[attr.name]);
+    const isSelectionValid = product.inStock && (
+        product.attributes.length === 0 ||
+        product.attributes.every(attr => selectedOptions[attr.name])
+    );
 
     return (
         <div className="product-page">

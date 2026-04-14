@@ -8,8 +8,8 @@ const App = () => {
             <BrowserRouter>
                   <Routes>
                         <Route path="/" element={<MainLayout />}>
-                              <Route index element={<Navigate to="/category/all" replace />} />
-                              <Route path="/category/:categoryName" element={<CategoryPage />} />
+                              <Route index element={<Navigate to="/all" replace />} />
+                              <Route path="/:categoryName" element={<CategoryPage />} />
                               <Route path="/product/:id" element={<ProductPage />} />
                         </Route>
                   </Routes>

@@ -1,11 +1,13 @@
 import './AttributeSelector.css';
-import './AttributeSelector.css';
 
 const AttributeSelector = ({ attribute, selectedValue, onSelect }) => {
     const attrKebab = attribute.name.toLowerCase().replace(/\s+/g, '-');
 
     return (
-        <div className="attribute-selector">
+        <div 
+            className="attribute-selector"
+            data-testid={`product-attribute-${attrKebab}`}
+        >
             <p className="selector-label">{attribute.name.toUpperCase()}:</p>
             <div className="attribute-options">
                 {attribute.items.map((item) => {
@@ -14,10 +16,11 @@ const AttributeSelector = ({ attribute, selectedValue, onSelect }) => {
                     return attribute.type === 'swatch' ? (
                         <button
                             key={item.id}
-                            data-testid={testId} 
+                            data-testid={testId}
                             className={`color-swatch ${item.value === selectedValue ? 'color-swatch-active' : ''}`}
                             style={{ backgroundColor: item.value }}
                             onClick={() => onSelect(item.value)}
+                            aria-label={`${attribute.name} ${item.display_value}`}
                         />
                     ) : (
                         <button

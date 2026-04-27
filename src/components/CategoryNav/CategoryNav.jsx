@@ -34,7 +34,6 @@ const CategoryNav = () => {
                 All
             </NavLink>
 
-            {/* The Dynamic links */}
             {categories.map((category) => {
                 const path = `/${category.name.toLowerCase()}`;
                 const isActive = location.pathname === path;
